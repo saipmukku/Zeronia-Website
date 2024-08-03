@@ -1,0 +1,6 @@
+{
+    "name":"Crafty Cannoneers",
+    "desc":"Pirate Game",
+    "player_count": [2,10],
+    "current_map_version":[{ "1.0.0": "1.19" },{ "1.0.1": "1.19" },{ "1.1.0": "1.21" }]
+}
