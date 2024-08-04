@@ -1,22 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+        <div className="zeronia-logo">
+          <img id="logo-picture" src="/pngs/zeronialogo-2021.png" alt="logo"/>
+          <span className="snowstorm-kraft" id="logo-text">Zeronia</span>
+        </div>
+        <p className="snowstorm-kraft">
+          Welcome to the Zeronia website front page
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
