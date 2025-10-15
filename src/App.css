@@ -1,0 +1,261 @@
+/* Element */
+
+/* Class Values */
+.app {
+    font-family: 'snowstorm', sans-serif;
+}
+
+.back-pic {
+    animation: fade-in 3s;
+    height: 100%;
+    object-fit: cover;
+    width: calc(100% / 3);
+}
+
+.bottom-pixel-bubble {
+    height: 10vh;
+    width: 10vw;
+}
+
+.cloud-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+}
+
+.clouds {
+    bottom: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    z-index: 0;
+}
+
+.collage {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.discord-logo {
+    height: 8vl;
+    width: 8vw;
+}
+
+.first-three {
+    display: inline-block;
+    height: 100vh;
+    max-width: 100%;
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: -2;
+}
+
+.flex-bubble {
+    height: 5vw;
+}
+
+.discord-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.home-body {
+    align-items: center;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(20px, 6vw, 40px);
+    height: auto;
+    justify-content: center;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.home-desc {
+    align-items: center;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(14px, 3.5vw, 24px);
+    height: 2000px;
+    text-align: center;
+    padding: 2vw;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.home-socials {
+    text-decoration: none;
+}
+
+.home-socials:visited {
+    color: black;
+}
+
+.logo {
+    height: 8vl;
+    width: 8vw;
+}
+
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: min(4vw, 30px);
+    justify-content: center;
+    margin-left: auto;
+    margin-right: min(2vw, 20px);
+    max-width: calc(100% - 140px);
+    box-sizing: border-box;
+}
+
+.other-socials {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 100%;
+    padding-left: 6vw;
+    padding-right: 6vw;
+    box-sizing: border-box;
+}
+
+.snowstorm {
+    align-items: right;
+    font-family: 'snowstorm', sans-serif;
+}
+
+.social-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.top-bar {
+    align-items: center;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    display: flex;
+    height: 110px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.top-text {
+    font-size: 28px;
+}
+
+.top-text:hover {
+    transform: scale(1.25);
+}
+
+.welcome {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* ID values */
+#click-for-socials {
+    font-size: clamp(16px, 5vw, 32px);
+}
+
+#github-info {
+    padding-right: 5.6vw;
+    margin-right: 1vw;
+}
+
+#logo {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    gap: 20px;
+    left: 10px;
+    position: absolute;
+    max-width: calc(100% - 20px);
+    box-sizing: border-box;
+}
+
+#logo-icon {
+    width: 30%;
+}
+
+#logo-text {
+    font-size: 50px;
+    margin: 0;
+}
+
+#pmc-info {
+    padding-right: min(8vw, 60px);
+    margin-left: min(-8vw, -60px);
+}
+
+#tree-footer {
+    bottom: 0;
+    height: auto;
+    position: relative;
+    width: 100%;
+}
+
+#x-info {
+    padding-left: min(5.5vw, 40px);
+    margin-right: min(-5.5vw, -40px);
+}
+
+#youtube-info {
+    padding-left: min(1.6vw, 15px);
+    margin-right: min(-1vw, -10px);
+}
+
+#welcome-text {
+    color: white;
+    font-size: clamp(40px, 8vw, 80px);
+    margin: auto;
+    margin-top: 35vh;
+    text-align: center;
+    width: min(30%, 90vw);
+    max-width: 500px;
+    box-sizing: border-box;
+    z-index: -3;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Split text character styling */
+#welcome-text span {
+    display: inline-block;
+    transform-origin: center bottom;
+}
+
+/* Rules */
+@font-face {
+    font-family: 'snowstorm';
+    src: url('fonts/snowstorm.otf') format('opentype');
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 100;
+    }
+}
