@@ -158,7 +158,7 @@
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    z-index: 1;
+    z-index: 1000;
 }
 
 .top-text {
@@ -255,11 +255,11 @@
 
 /* Social Library Styling */
 .social-library {
-    padding: 40px 20px;
+    padding: 30px;
     background-color: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
     margin: 20px auto;
-    max-width: 1200px;
+    max-width: 800px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
@@ -537,5 +537,20 @@
     }
     to {
         opacity: 100;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
     }
 }

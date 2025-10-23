@@ -36,13 +36,13 @@ db.serialize(() => {
       author: "Zeronia Team"
     },
     {
-      title: "New Minigame Release: SkyBlock Challenge",
-      content: "Test your building skills in our latest minigame! Compete with friends and see who can build the most impressive structures in the sky.",
+      title: "New Minigame Release: Snowy Skirmish",
+      content: "Test your snow-faring skills in our latest minigame!", 
       author: "Development Team"
     },
     {
-      title: "Community Event: Build Competition",
-      content: "Join our monthly build competition starting next week! Prizes include exclusive in-game items and recognition on our website.",
+      title: "Community Event: Discord Server Party",
+      content: "Join our Discord server party, link to the server ison the home page.",
       author: "Event Coordinators"
     }
   ];

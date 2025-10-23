@@ -1,9 +1,35 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { NavigationBar, SocialLibrary } from './SharedComponents';
 import { animate, splitText, stagger } from 'animejs';
 
 function Home() {
   const welcomeTextRef = useRef(null);
+  const [serverStatus, setServerStatus] = useState(true); // true = online, false = offline
+  const [isCheckingStatus, setIsCheckingStatus] = useState(false);
+
+  // Function to check server status
+  const checkServerStatus = async () => {
+    setIsCheckingStatus(true);
+    try {
+      const response = await fetch('https://api.mcsrvstat.us/3/play.cubekrowd.net');
+      const data = await response.json();
+      console.log('Server Status API Response:', data);
+      console.log('Server Online Status:', data.online);
+      setServerStatus(data.online === true);
+    } catch (error) {
+      console.error('Error checking server status:', error);
+      setServerStatus(false); // Set to offline if API fails
+    } finally {
+      setIsCheckingStatus(false);
+    }
+  };
+
+  // Check server status on component mount and every 30 seconds
+  useEffect(() => {
+    checkServerStatus();
+    const interval = setInterval(checkServerStatus, 30000); // Check every 30 seconds
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -126,7 +152,42 @@ function Home() {
         <div className="cloud-container">
           <div className="clouds" style={{backgroundImage: "url('/pngs/cloud-pixel-art.png')"}}></div>
         </div>
-        <SocialLibrary />
+        <div className="server-status">
+          <div 
+            className="server-status-bar"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '20px',
+              padding: '20px 20px',
+              backgroundColor: isCheckingStatus ? 'rgba(255, 255, 0, 0.2)' : (serverStatus ? 'rgba(0, 255, 0, 0.2)' : 'rgba(255, 0, 0, 0.2)'),
+              border: `2px solid ${isCheckingStatus ? '#ffff00' : (serverStatus ? '#00ff00' : '#ff0000')}`,
+              borderRadius: '25px',
+              transition: 'all 0.3s ease',
+              maxWidth: '300px',
+              margin: '0 auto 20px auto',
+              fontFamily: 'snowstorm',
+              fontSize: '16px',
+              fontWeight: 'bold',
+              color: isCheckingStatus ? '#ffff00' : (serverStatus ? '#00ff00' : '#ff0000')
+            }}
+          >
+            <div 
+              style={{
+                width: '12px',
+                height: '12px',
+                borderRadius: '50%',
+                backgroundColor: isCheckingStatus ? '#ffff00' : (serverStatus ? '#00ff00' : '#ff0000'),
+                animation: isCheckingStatus ? 'pulse 1s infinite' : (serverStatus ? 'pulse 2s infinite' : 'none')
+              }}
+            />
+            <span>
+              {isCheckingStatus ? 'Checking Server Status...' : (serverStatus ? 'CubeKrowd Server Online' : 'CubeKrowd Server Offline')}
+            </span>
+          </div>
+          <SocialLibrary />
+        </div>
         <img src="/pngs/pixel-tree-footer.png" id="tree-footer" alt="tree-footer"/>
       </div>
     </div>
