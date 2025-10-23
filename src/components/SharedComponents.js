@@ -12,8 +12,8 @@ export function NavigationBar() {
       </div>
       <div className="nav-bar">
         <Link to="/" className="top-text">Home</Link>
-        <Link to="/announcements" className="top-text">Announcements</Link>
         <Link to="/minigames" className="top-text">Minigames</Link>
+        <Link to="/announcements" className="top-text">Announcements</Link>
         <Link to="/about" className="top-text">About</Link>
       </div>
     </div>

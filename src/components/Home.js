@@ -124,7 +124,7 @@ function Home() {
           <img className="back-pic"  src="/pngs/background-pic-3.png" alt="background-pic-3"/>
         </div>
         <div className="cloud-container">
-          <div className="clouds"></div>
+          <div className="clouds" style={{backgroundImage: "url('/pngs/cloud-pixel-art.png')"}}></div>
         </div>
         <SocialLibrary />
         <img src="/pngs/pixel-tree-footer.png" id="tree-footer" alt="tree-footer"/>
