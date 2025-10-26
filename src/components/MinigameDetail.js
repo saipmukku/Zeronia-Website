@@ -1,12 +1,14 @@
 import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { NavigationBar } from './SharedComponents';
 import { animate, splitText, stagger } from 'animejs';
+import { IoMdArrowRoundBack } from "react-icons/io";
 
-function Minigames() {
+function MinigameDetail() {
+  const { minigameId } = useParams();
   const headerTextRef = useRef(null);
 
-  // Minigame data
+  // Minigame data (same as in Minigames.js)
   const minigames = [
     {
       id: 1,
@@ -64,15 +66,16 @@ function Minigames() {
     }
   ];
 
+  const minigame = minigames.find(game => game.id === parseInt(minigameId));
+
   useEffect(() => {
-    // Split text animation for "Minigames"
+    // Split text animation for the minigame title
     let animationTimeout;
     let staggerTimeout;
     
     if (headerTextRef.current) {
       animationTimeout = setTimeout(() => {
         try {
-          // Double-check that the ref still exists (component might have unmounted)
           if (!headerTextRef.current) {
             console.log('Component unmounted, skipping animation');
             return;
@@ -81,8 +84,6 @@ function Minigames() {
           const split = splitText(headerTextRef.current, {
             chars: true
           });
-
-          console.log('Split result:', split);
 
           if (split && split.chars && split.chars.length > 0) {
             // Set initial state for characters (hidden)
@@ -121,7 +122,7 @@ function Minigames() {
             }, 200);
           } else {
             console.error('Split failed or no characters found');
-            // Fallback animation - make element visible and animate
+            // Fallback animation
             if (headerTextRef.current) {
               headerTextRef.current.style.visibility = 'visible';
               headerTextRef.current.style.opacity = '0';
@@ -136,7 +137,7 @@ function Minigames() {
           }
         } catch (error) {
           console.error('Animation error:', error);
-          // Fallback: simple fade-in animation - make element visible and animate
+          // Fallback: simple fade-in animation
           if (headerTextRef.current) {
             headerTextRef.current.style.visibility = 'visible';
             headerTextRef.current.style.opacity = '0';
@@ -149,11 +150,10 @@ function Minigames() {
             });
           }
         }
-      }, 500); // Reduced delay for faster animation start
+      }, 500);
     }
 
     return () => {
-      // Clean up timeouts to prevent errors when component unmounts
       if (animationTimeout) {
         clearTimeout(animationTimeout);
       }
@@ -161,7 +161,19 @@ function Minigames() {
         clearTimeout(staggerTimeout);
       }
     }
-  }, []);
+  }, [minigameId]);
+
+  if (!minigame) {
+    return (
+      <div className="app">
+        <NavigationBar />
+        <div className="page-content">
+          <h1>Minigame not found</h1>
+          <Link to="/minigames">← Back to Minigames</Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="app">
@@ -172,28 +184,55 @@ function Minigames() {
           <img className="back-pic" src="/pngs/background-pic-2.png" alt="background-pic-2"/>
           <img className="back-pic" src="/pngs/background-pic-3.png" alt="background-pic-3"/>
         </div>
-        <h1 ref={headerTextRef}>Minigames</h1>
         
-        <div className="minigames-container">
-          {minigames.map((minigame, index) => (
-            <Link 
-              key={minigame.id} 
-              to={`/minigame/${minigame.id}`}
-              className={`minigame-card ${index % 2 === 0 ? 'left-aligned' : 'right-aligned'}`}
-            >
-              <div className="minigame-image">
-                <img src={minigame.image} alt={minigame.title} />
-              </div>
-              <div className="minigame-content">
-                <h3 className="minigame-title">{minigame.title}</h3>
-                <p className="minigame-description">{minigame.description}</p>
-              </div>
+        <div className="minigame-detail-container">
+          <div className="back-button-container">
+            <Link to="/minigames" className="back-button">
+              <IoMdArrowRoundBack />
+              Back to Minigames
             </Link>
-          ))}
+          </div>
+          
+          <div className="minigame-header">
+            <h1 ref={headerTextRef}>{minigame.title}</h1>
+            <p className="minigame-description">{minigame.description}</p>
+          </div>
+
+          <div className="minigame-content">
+            <div className="content-section">
+              <h2>Gallery</h2>
+              <div className="gallery-placeholder">
+                <p>Gallery images will be displayed here</p>
+              </div>
+            </div>
+
+            <div className="content-section">
+              <h2>Gameplay Video</h2>
+              <div className="video-placeholder">
+                <p>YouTube embed will be displayed here</p>
+              </div>
+            </div>
+
+            <div className="content-section">
+              <h2>Download</h2>
+              <div className="download-section">
+                <div className="download-item">
+                  <h3>Map Download</h3>
+                  <p>Download the latest version of the {minigame.title} map</p>
+                  <button className="download-button">Download Map</button>
+                </div>
+                <div className="download-item">
+                  <h3>Resource Pack</h3>
+                  <p>Get the custom resource pack for {minigame.title}</p>
+                  <button className="download-button">Download Pack</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-export default Minigames;
+export default MinigameDetail;

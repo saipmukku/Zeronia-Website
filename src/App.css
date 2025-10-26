@@ -253,6 +253,241 @@
     transform-origin: center bottom;
 }
 
+/* Minigames Styling */
+.minigames-container {
+    max-width: 100%;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.minigame-card {
+    width: 60%;
+    margin: 50px 0;
+    height: 250px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    text-decoration: none;
+    color: inherit;
+}
+
+.minigame-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    border-color: #007bff;
+}
+
+.minigame-card.left-aligned {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.minigame-card.right-aligned {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.minigame-image {
+    flex: 0 0 45%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+}
+
+.minigame-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.minigame-content {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.minigame-title {
+    font-size: clamp(20px, 4vw, 28px);
+    font-family: 'snowstorm', sans-serif;
+    color: #333;
+    margin: 0 0 15px 0;
+    font-weight: bold;
+}
+
+.minigame-description {
+    font-size: clamp(14px, 2.5vw, 16px);
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Minigame Detail Page Styling */
+.minigame-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.back-button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.minigame-header {
+    text-align: center;
+    margin-bottom: 60px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-family: 'snowstorm', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+}
+
+.back-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
+    background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+    color: white;
+    text-decoration: none;
+}
+
+.back-button svg {
+    font-size: 18px;
+}
+
+
+.minigame-header h1 {
+    font-size: clamp(32px, 6vw, 48px);
+    font-family: 'snowstorm', sans-serif;
+    color: #333;
+    margin: 0 0 20px 0;
+    font-weight: bold;
+}
+
+.minigame-header .minigame-description {
+    font-size: clamp(16px, 3vw, 20px);
+    color: #666;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.minigame-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.content-section {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.content-section h2 {
+    font-size: clamp(24px, 4vw, 32px);
+    font-family: 'snowstorm', sans-serif;
+    color: #333;
+    margin: 0 0 20px 0;
+    font-weight: bold;
+    text-align: center;
+}
+
+.gallery-placeholder,
+.video-placeholder {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 2px dashed #007bff;
+    border-radius: 15px;
+    padding: 60px 20px;
+    text-align: center;
+    color: #666;
+    font-size: 18px;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.download-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.download-item {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.download-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-color: #007bff;
+}
+
+.download-item h3 {
+    font-size: 20px;
+    font-family: 'snowstorm', sans-serif;
+    color: #333;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+}
+
+.download-item p {
+    color: #666;
+    margin: 0 0 20px 0;
+    line-height: 1.5;
+}
+
+.download-button {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'snowstorm', sans-serif;
+}
+
+.download-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+    background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+}
+
 /* Social Library Styling */
 .social-library {
     padding: 30px;

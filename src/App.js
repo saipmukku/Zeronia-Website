@@ -7,6 +7,7 @@ import Home from './components/Home';
 import About from './components/About';
 import Announcements from './components/Announcements';
 import Minigames from './components/Minigames';
+import MinigameDetail from './components/MinigameDetail';
 import GamePage from './components/GamePage';
 
 function App() {
@@ -70,6 +71,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/announcements" element={<Announcements />} />
         <Route path="/minigames" element={<Minigames />} />
+        <Route path="/minigame/:minigameId" element={<MinigameDetail />} />
         <Route path="/about" element={<About />} />
         {gameRoutes}
       </Routes>

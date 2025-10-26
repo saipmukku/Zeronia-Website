@@ -173,13 +173,13 @@ function Home() {
               color: isCheckingStatus ? '#ffff00' : (serverStatus ? '#00ff00' : '#ff0000')
             }}
           >
-            <div 
+            <img 
+              src={isCheckingStatus ? '/pngs/server-offline.png' : (serverStatus ? '/pngs/server-online.png' : '/pngs/server-offline.png')}
+              alt={isCheckingStatus ? 'Checking' : (serverStatus ? 'Online' : 'Offline')}
               style={{
-                width: '12px',
-                height: '12px',
-                borderRadius: '50%',
-                backgroundColor: isCheckingStatus ? '#ffff00' : (serverStatus ? '#00ff00' : '#ff0000'),
-                animation: isCheckingStatus ? 'pulse 1s infinite' : (serverStatus ? 'pulse 2s infinite' : 'none')
+                width: '24px',
+                height: '24px',
+                objectFit: 'contain'
               }}
             />
             <span>
