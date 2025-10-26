@@ -4,10 +4,9 @@ import { animate, splitText, stagger } from 'animejs';
 
 function Home() {
   const welcomeTextRef = useRef(null);
-  const [serverStatus, setServerStatus] = useState(true); // true = online, false = offline
+  const [serverStatus, setServerStatus] = useState(true);
   const [isCheckingStatus, setIsCheckingStatus] = useState(false);
 
-  // Function to check server status
   const checkServerStatus = async () => {
     setIsCheckingStatus(true);
     try {
@@ -18,33 +17,28 @@ function Home() {
       setServerStatus(data.online === true);
     } catch (error) {
       console.error('Error checking server status:', error);
-      setServerStatus(false); // Set to offline if API fails
+      setServerStatus(false);
     } finally {
       setIsCheckingStatus(false);
     }
   };
 
-  // Check server status on component mount and every 30 seconds
   useEffect(() => {
     checkServerStatus();
-    const interval = setInterval(checkServerStatus, 30000); // Check every 30 seconds
+    const interval = setInterval(checkServerStatus, 30000);
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Scroll handling can be added here if needed
-    };
+    const handleScroll = () => {};
     handleScroll();
 
-    // Split text animation for "We Are Zeronia"
     let animationTimeout;
     let staggerTimeout;
     
     if (welcomeTextRef.current) {
       animationTimeout = setTimeout(() => {
         try {
-          // Double-check that the ref still exists (component might have unmounted)
           if (!welcomeTextRef.current) {
             console.log('Component unmounted, skipping animation');
             return;
@@ -57,7 +51,6 @@ function Home() {
           console.log('Split result:', split);
 
           if (split && split.chars && split.chars.length > 0) {
-            // Make parent element visible but keep characters hidden initially
             if (welcomeTextRef.current) {
               welcomeTextRef.current.style.visibility = 'visible';
               welcomeTextRef.current.style.opacity = '1';
@@ -74,7 +67,6 @@ function Home() {
               duration: 0
             });
 
-            // Animate characters in with stagger
             staggerTimeout = setTimeout(() => {
               if (welcomeTextRef.current) {
                 animate(split.chars, {
@@ -93,7 +85,6 @@ function Home() {
             }, 200);
           } else {
             console.error('Split failed or no characters found');
-            // Fallback animation - make element visible and animate
             if (welcomeTextRef.current) {
               welcomeTextRef.current.style.visibility = 'visible';
               welcomeTextRef.current.style.opacity = '0';
@@ -108,7 +99,6 @@ function Home() {
           }
         } catch (error) {
           console.error('Animation error:', error);
-          // Fallback: simple fade-in animation - make element visible and animate
           if (welcomeTextRef.current) {
             welcomeTextRef.current.style.visibility = 'visible';
             welcomeTextRef.current.style.opacity = '0';
@@ -121,13 +111,12 @@ function Home() {
             });
           }
         }
-      }, 1000); // Increased delay to ensure DOM is ready
+      }, 1000);
     }
 
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      // Clean up timeouts to prevent errors when component unmounts
       if (animationTimeout) {
         clearTimeout(animationTimeout);
       }

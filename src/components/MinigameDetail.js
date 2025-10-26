@@ -8,7 +8,6 @@ function MinigameDetail() {
   const { minigameId } = useParams();
   const headerTextRef = useRef(null);
 
-  // Minigame data (same as in Minigames.js)
   const minigames = [
     {
       id: 1,
@@ -69,7 +68,6 @@ function MinigameDetail() {
   const minigame = minigames.find(game => game.id === parseInt(minigameId));
 
   useEffect(() => {
-    // Split text animation for the minigame title
     let animationTimeout;
     let staggerTimeout;
     
@@ -86,7 +84,6 @@ function MinigameDetail() {
           });
 
           if (split && split.chars && split.chars.length > 0) {
-            // Set initial state for characters (hidden)
             animate(split.chars, {
               keyframes: [
                 { 
@@ -98,14 +95,11 @@ function MinigameDetail() {
               duration: 0
             });
 
-            // Make parent element visible and animate characters in with stagger
             staggerTimeout = setTimeout(() => {
               if (headerTextRef.current) {
-                // Make the container visible
                 headerTextRef.current.style.visibility = 'visible';
                 headerTextRef.current.style.opacity = '1';
                 
-                // Animate characters in
                 animate(split.chars, {
                   keyframes: [
                     {
@@ -122,7 +116,6 @@ function MinigameDetail() {
             }, 200);
           } else {
             console.error('Split failed or no characters found');
-            // Fallback animation
             if (headerTextRef.current) {
               headerTextRef.current.style.visibility = 'visible';
               headerTextRef.current.style.opacity = '0';
@@ -137,7 +130,6 @@ function MinigameDetail() {
           }
         } catch (error) {
           console.error('Animation error:', error);
-          // Fallback: simple fade-in animation
           if (headerTextRef.current) {
             headerTextRef.current.style.visibility = 'visible';
             headerTextRef.current.style.opacity = '0';
@@ -198,18 +190,18 @@ function MinigameDetail() {
             <p className="minigame-description">{minigame.description}</p>
           </div>
 
+          <div className="content-section">
+            <h2>Trailer</h2>
+            <div className="video-placeholder">
+              <p>YouTube embed will be displayed here</p>
+            </div>
+          </div>
+
           <div className="minigame-content">
             <div className="content-section">
               <h2>Gallery</h2>
               <div className="gallery-placeholder">
                 <p>Gallery images will be displayed here</p>
-              </div>
-            </div>
-
-            <div className="content-section">
-              <h2>Gameplay Video</h2>
-              <div className="video-placeholder">
-                <p>YouTube embed will be displayed here</p>
               </div>
             </div>
 

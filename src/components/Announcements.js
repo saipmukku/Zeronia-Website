@@ -9,7 +9,6 @@ function Announcements() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch announcements from API or static data
   useEffect(() => {
     const loadAnnouncements = async () => {
       try {
@@ -27,7 +26,6 @@ function Announcements() {
   }, []);
 
   useEffect(() => {
-    // Split text animation for "Announcements"
     let animationTimeout;
     let staggerTimeout;
     

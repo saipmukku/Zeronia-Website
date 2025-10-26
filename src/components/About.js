@@ -8,14 +8,12 @@ function About() {
   const headerTextRef = useRef(null);
 
   useEffect(() => {
-    // Split text animation for "About Zeronia"
     let animationTimeout;
     let staggerTimeout;
     
     if (headerTextRef.current) {
       animationTimeout = setTimeout(() => {
         try {
-          // Double-check that the ref still exists (component might have unmounted)
           if (!headerTextRef.current) {
             console.log('Component unmounted, skipping animation');
             return;
@@ -28,7 +26,6 @@ function About() {
           console.log('Split result:', split);
 
           if (split && split.chars && split.chars.length > 0) {
-            // Set initial state for characters (hidden)
             animate(split.chars, {
               keyframes: [
                 { 
@@ -40,14 +37,11 @@ function About() {
               duration: 0
             });
 
-            // Make parent element visible and animate characters in with stagger
             staggerTimeout = setTimeout(() => {
               if (headerTextRef.current) {
-                // Make the container visible
                 headerTextRef.current.style.visibility = 'visible';
                 headerTextRef.current.style.opacity = '1';
                 
-                // Animate characters in
                 animate(split.chars, {
                   keyframes: [
                     {
@@ -116,11 +110,29 @@ function About() {
           <img className="back-pic" src="/pngs/background-pic-3.png" alt="background-pic-3"/>
         </div>
         <h1 ref={headerTextRef}>About Zeronia</h1>
-        <p style={{ textAlign: 'center', fontSize: "30px" }}>Founded in 2017, we are a group of minigame developers for Minecraft: Java Edition. All of our custom
-          multiplayer maps and games are made in vanilla Minecraft, and we are officially recognized as Minecraft Realms
-          partners. On this website, you can check out and download our minigames to play with your friends!</p>
-        <p style={{ textAlign: 'center', fontSize: "30px"  }}>Our team is passionate about creating unique and engaging multiplayer experiences that bring communities together through the power of Minecraft.</p>
-        <p style={{ textAlign: 'center', fontSize: "30px"  }}>Learn more about our team below!</p>
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          marginBottom: '40px'
+        }}>
+          <div style={{
+            padding: '35px 50px',
+            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+            borderRadius: '10px',
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+            border: '2px solid #e0e0e0',
+            maxWidth: '800px',
+            width: '100%',
+            zIndex: 0,
+            position: 'relative'
+          }}>
+            <p style={{ textAlign: 'center', fontSize: "30px", margin: '0 0 20px 0' }}>Founded in 2017, we are a group of minigame developers for Minecraft: Java Edition. All of our custom
+              multiplayer maps and games are made in vanilla Minecraft, and we are officially recognized as Minecraft Realms
+              partners. On this website, you can check out and download our minigames to play with your friends!</p>
+            <p style={{ textAlign: 'center', fontSize: "30px", margin: '0 0 20px 0' }}>Our team is passionate about creating unique and engaging multiplayer experiences that bring communities together through the power of Minecraft.</p>
+            <p style={{ textAlign: 'center', fontSize: "30px", margin: 0 }}>Learn more about our team below!</p>
+          </div>
+        </div>
          <div>
            <h2 style={{ textAlign: 'center', fontSize: "48px"  }}>Team</h2>
            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>

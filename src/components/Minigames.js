@@ -65,14 +65,12 @@ function Minigames() {
   ];
 
   useEffect(() => {
-    // Split text animation for "Minigames"
     let animationTimeout;
     let staggerTimeout;
     
     if (headerTextRef.current) {
       animationTimeout = setTimeout(() => {
         try {
-          // Double-check that the ref still exists (component might have unmounted)
           if (!headerTextRef.current) {
             console.log('Component unmounted, skipping animation');
             return;
@@ -85,7 +83,6 @@ function Minigames() {
           console.log('Split result:', split);
 
           if (split && split.chars && split.chars.length > 0) {
-            // Set initial state for characters (hidden)
             animate(split.chars, {
               keyframes: [
                 { 
@@ -97,14 +94,11 @@ function Minigames() {
               duration: 0
             });
 
-            // Make parent element visible and animate characters in with stagger
             staggerTimeout = setTimeout(() => {
               if (headerTextRef.current) {
-                // Make the container visible
                 headerTextRef.current.style.visibility = 'visible';
                 headerTextRef.current.style.opacity = '1';
                 
-                // Animate characters in
                 animate(split.chars, {
                   keyframes: [
                     {
@@ -121,7 +115,6 @@ function Minigames() {
             }, 200);
           } else {
             console.error('Split failed or no characters found');
-            // Fallback animation - make element visible and animate
             if (headerTextRef.current) {
               headerTextRef.current.style.visibility = 'visible';
               headerTextRef.current.style.opacity = '0';
@@ -136,7 +129,6 @@ function Minigames() {
           }
         } catch (error) {
           console.error('Animation error:', error);
-          // Fallback: simple fade-in animation - make element visible and animate
           if (headerTextRef.current) {
             headerTextRef.current.style.visibility = 'visible';
             headerTextRef.current.style.opacity = '0';
@@ -149,11 +141,10 @@ function Minigames() {
             });
           }
         }
-      }, 500); // Reduced delay for faster animation start
+      }, 500);
     }
 
     return () => {
-      // Clean up timeouts to prevent errors when component unmounts
       if (animationTimeout) {
         clearTimeout(animationTimeout);
       }
